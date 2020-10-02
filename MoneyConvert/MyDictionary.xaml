@@ -1,0 +1,55 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoneyConvert">
+
+    <!--Начальный экран-->
+    <Style x:Key="MoneyValue" TargetType="TextBlock" >
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="23"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
+    </Style>
+
+    <Style x:Key="Error" TargetType="TextBlock" >
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="23"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="#08F"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style TargetType="HyperlinkButton">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#08F"/>
+    </Style>
+
+    <!--Экран выбора языка -->
+    <Style x:Key="MoneyCountryItem" TargetType="ListBoxItem">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="20,10,20,0"/>
+    </Style>
+
+    <Style x:Key="MoneyLeft" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+
+    <Style x:Key="MoneyRightAbr" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+
+</ResourceDictionary>
