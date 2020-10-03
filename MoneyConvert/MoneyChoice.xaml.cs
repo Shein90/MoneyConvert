@@ -27,5 +27,14 @@ namespace MoneyConvert
         {
             //обработчик выбора элемента
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(Frame.CanGoBack)
+            {
+                // Frame.GoBack();
+                Frame.Navigate(typeof(MainPage));
+            }
+        }
     }
 }

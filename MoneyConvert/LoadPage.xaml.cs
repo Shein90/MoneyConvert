@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -13,18 +14,32 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace MoneyConvert
 {
-    /// <summary>
-    /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
-    /// </summary>
-    public sealed partial class BlankPage1 : Page
+    public sealed partial class LoadPage : Page
     {
-        public BlankPage1()
+        public LoadPage()
         {
             this.InitializeComponent();
+            Thread.Sleep(500);
+
+
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+
+        }
+
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
+
+
+
     }
 }

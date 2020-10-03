@@ -25,6 +25,16 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="BorderBrush" Value="#08F"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+
+    <Style x:Key="SecondValue" TargetType="TextBlock">
+        <Setter Property="Width" Value="134"/>
+        <Setter Property="Height" Value="33"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
+        
     </Style>
 
     <Style TargetType="HyperlinkButton">
