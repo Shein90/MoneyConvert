@@ -23,7 +23,6 @@ namespace MoneyConvert
 {
     public sealed partial class MainPage : Page
     {
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -38,7 +37,6 @@ namespace MoneyConvert
         {
             Frame.Navigate(typeof(MoneyChoice), "SecondVal");
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

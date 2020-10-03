@@ -58,7 +58,7 @@ namespace MoneyConvert
             }
         }
 
-        // Получаем информацию о вызывающем
+        // Получаем информацию о вызывающем контролере
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             HyperLinkInfo = e.Parameter.ToString();
