@@ -4,6 +4,22 @@
     xmlns:local="using:MoneyConvert">
 
     <!--Начальный экран-->
+    <Style x:Key="Value" TargetType="TextBox">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="BorderBrush" Value="#08F"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+
+    <Style x:Key="Result" TargetType="TextBlock">
+        <Setter Property="Width" Value="140"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="FontSize" Value="18"/>
+
+    </Style>
+
     <Style x:Key="MoneyValue" TargetType="TextBlock" >
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -11,36 +27,29 @@
         <Setter Property="FontFamily" Value="Verdana"/>
     </Style>
 
-    <Style x:Key="Error" TargetType="TextBlock" >
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="23"/>
-        <Setter Property="FontFamily" Value="Verdana"/>
-    </Style>
-
-    <Style TargetType="TextBox">
-        <Setter Property="Width" Value="150"/>
-        <Setter Property="Height" Value="35"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="BorderBrush" Value="#08F"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FontSize" Value="20"/>
-    </Style>
-
-    <Style x:Key="SecondValue" TargetType="TextBlock">
-        <Setter Property="Width" Value="134"/>
-        <Setter Property="Height" Value="33"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="20"/>
-        
-    </Style>
-
     <Style TargetType="HyperlinkButton">
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="Foreground" Value="#08F"/>
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+
+    <Style x:Key="Error" TargetType="TextBlock" >
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontFamily" Value="Verdana"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="30"/>
+    </Style>
+
+    <Style x:Key="LoadBar" TargetType="ProgressRing">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="IsActive" Value="False"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Margin" Value="0,0,0,10"/>
     </Style>
 
     <!--Экран выбора языка -->
@@ -52,13 +61,14 @@
     <Style x:Key="MoneyLeft" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontSize" Value="25"/>
     </Style>
 
     <Style x:Key="MoneyRightAbr" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="25"/>
     </Style>
 
 

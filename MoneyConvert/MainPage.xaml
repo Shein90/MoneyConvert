@@ -8,13 +8,17 @@
 	mc:Ignorable="d"
     >
 
+    <Page.Resources>
+        <local:MoneyChoice x:Key="MoneyChoice"/>
+    </Page.Resources>
+
     <Grid Background="#FF2C2C2C" BorderBrush="#08F" BorderThickness="1">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -23,28 +27,27 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Width="50" Height="32" BorderBrush="#08F" BorderThickness="0.5" Click="Button_Click" >
+        <TextBox x:Name="FirstValue" Grid.Row="0" Grid.Column="0" Style="{StaticResource Value}"/>
+
+        <Grid Grid.Row="0" Grid.Column="2" Width="150" Height="35" BorderBrush="#08F" BorderThickness="1" CornerRadius="5">
+            <TextBlock x:Name="Result" Text="refdfd" Style="{StaticResource Result}"/>
+        </Grid>
+
+        <Button Grid.Row="1" Grid.Column="1" Width="50" Height="32" BorderBrush="#08F" BorderThickness="0.5" CornerRadius="5" Click="Button_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="ms-appx:///Assets/arrow.png" Opacity="0.15" Stretch="Uniform"/>
             </Button.Background>
         </Button>
 
-        <TextBox x:Name="FirstValue" Grid.Row="0" Grid.Column="0"/>
-        <StackPanel Grid.Row="0"  Grid.Column="2" Width="150" Height="35" BorderBrush="#08F" BorderThickness="1">
-            <TextBlock x:Name="SecondValue" Text="refdfd" Style="{StaticResource SecondValue}" />
-        </StackPanel>
+        <TextBlock x:Name="Fvalute" Text="{Binding Source={StaticResource MoneyChoice}, Path=FirstValutInfo}" Grid.Row="1" Grid.Column="0" Style="{StaticResource MoneyValue}"/>
+        <TextBlock x:Name="Svalute" Text="{Binding Source={StaticResource MoneyChoice}, Path=SecondValutInfo}" Grid.Row="1" Grid.Column="2" Style="{StaticResource MoneyValue}"/>
 
-        <TextBlock Text="1233r" Grid.Row="1" Grid.Column="0" Style="{StaticResource MoneyValue}"/>
-        <TextBlock Text="2323" Grid.Row="1" Grid.Column="2" Style="{StaticResource MoneyValue}"/>
+        <HyperlinkButton x:Name="HyperChoice1" Content="Изменить валюту" Grid.Column="0" Grid.Row="2" Click="HyperlinkButton_Click_FirstVal"/>
+        <HyperlinkButton x:Name="HyperChoice2" Content= "Изменить валюту" Grid.Column="2" Grid.Row="2" Click="HyperlinkButton_Click_SecondVal"/>
 
-        <HyperlinkButton Content="Изменить валюту" Grid.Column="0" Grid.Row="2" Click="HyperlinkButton_Click_FirstVal"/>
-        <HyperlinkButton Content= "Изменить валюту" Grid.Column="2" Grid.Row="2" Click="HyperlinkButton_Click_SecondVal"/>
-
-        <!--<TextBlock x:Name="Error" Text="sddsdsdssd" Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource Error}"/>-->
-        <ProgressRing x:Name="LoadBar" Grid.Row="3" Grid.Column="1" Foreground="White" IsActive="False" Width="50" Height="50"/>
-        <!--<StackPanel x:Name="Load" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <ProgressRing Foreground="White" IsActive="True" Width="50" Height="50"/>
-        </StackPanel>-->
+        <TextBlock x:Name="Error" Text="ff" Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource Error}"/>
+        <ProgressRing x:Name="LoadBar" Grid.Row="3" Grid.Column="1" Style="{StaticResource LoadBar}"/>
+        
     </Grid>
 
 </Page>

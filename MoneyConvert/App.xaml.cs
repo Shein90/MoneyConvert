@@ -33,7 +33,7 @@ namespace MoneyConvert
 
             
             ApplicationView view = ApplicationView.GetForCurrentView();
-            view.SetPreferredMinSize(new Size(450, 500));
+            view.SetPreferredMinSize(new Size(450, 400));
             view.SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
 
             if (rootFrame == null)

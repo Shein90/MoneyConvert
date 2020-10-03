@@ -23,7 +23,7 @@ namespace MoneyConvert
 
         public string Calculate()
         {
-            string a = "Hello12";
+            string a = "Result";
             return a;
         }
 

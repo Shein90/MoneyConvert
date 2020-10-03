@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -22,34 +23,32 @@ namespace MoneyConvert
 {
     public sealed partial class MainPage : Page
     {
+
         public MainPage()
         {
             this.InitializeComponent();
-
         }
 
         private void HyperlinkButton_Click_FirstVal(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoForward)
-            {
-                Frame.GoForward();
-            }
-            Frame.Navigate(typeof(MoneyChoice));
+            Frame.Navigate(typeof(MoneyChoice), "FirstVal");
         }
 
         private void HyperlinkButton_Click_SecondVal(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoForward)
-            {
-                Frame.GoForward();
-            }
-            Frame.Navigate(typeof(MoneyChoice));
+            Frame.Navigate(typeof(MoneyChoice), "SecondVal");
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LoadBar.IsActive = true;
-
+            //вызывает метод
+            if (!string.IsNullOrEmpty(FirstValue.Text))
+            {
+                CostCalculation cost = new CostCalculation(Convert.ToDouble(FirstValue.Text), Fvalute.Text, Svalute.Text);
+                Result.Text = cost.Calculate();
+            }
         }
     }
 }
