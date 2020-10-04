@@ -6,6 +6,11 @@ namespace MoneyConvert
 {
     public sealed partial class MainPage : Page
     {
+        // для сохранения введенного пользовательского значения
+        public static string UserValue { set; get; } = "";
+
+       
+        
         public MainPage()
         {
             this.InitializeComponent();
@@ -25,23 +30,23 @@ namespace MoneyConvert
         // Обработчик запуска расчётов
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
             try
             {
                 if (string.IsNullOrEmpty(FirstValue.Text))
                     throw new Exception("Вы не ввели значение!");
-
                 if (!double.TryParse(FirstValue.Text, out double val))
                     throw new Exception("Это не число!");
-
-            //    LoadBar.IsActive = true;
+                if (Fvalute.Text == "-" || Svalute.Text == "-")
+                    throw new Exception("Вы не выбрали валюту!");
+                    
                 CostCalculation cost = new CostCalculation();
                 Result.Text = cost.Calculate(Convert.ToDouble(FirstValue.Text), Fvalute.Text, Svalute.Text);
+                Error.Text = "Готово!";
             }
-            // Проверить на наличие ошибок!
             catch (Exception ex)
             {
                 Error.Text = ex.Message;
+                Result.Text = "";
             }
 
         }

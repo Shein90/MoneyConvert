@@ -31,14 +31,12 @@ namespace MoneyConvert
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
-            
             ApplicationView view = ApplicationView.GetForCurrentView();
-            view.SetPreferredMinSize(new Size(450, 400));
+            view.SetPreferredMinSize(new Size(450, 500));
             view.SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
 
             if (rootFrame == null)
             {
-                // Создание фрейма, который станет контекстом навигации, и переход к первой странице
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
@@ -48,7 +46,6 @@ namespace MoneyConvert
                     //TODO: Загрузить состояние из ранее приостановленного приложения
                 }
 
-                // Размещение фрейма в текущем окне
                 Window.Current.Content = rootFrame;
             }
             
@@ -56,33 +53,19 @@ namespace MoneyConvert
             {
                 if (rootFrame.Content == null)
                 {
-                    // Если стек навигации не восстанавливается для перехода к первой странице,
-                    // настройка новой страницы путем передачи необходимой информации в качестве параметра
-                    // навигации
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
-                // Обеспечение активности текущего окна
+
                 Window.Current.Activate();
             }
         }
 
-        /// <summary>
-        /// Вызывается в случае сбоя навигации на определенную страницу
-        /// </summary>
-        /// <param name="sender">Фрейм, для которого произошел сбой навигации</param>
-        /// <param name="e">Сведения о сбое навигации</param>
+
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-        /// <summary>
-        /// Вызывается при приостановке выполнения приложения.  Состояние приложения сохраняется
-        /// без учета информации о том, будет ли оно завершено или возобновлено с неизменным
-        /// содержимым памяти.
-        /// </summary>
-        /// <param name="sender">Источник запроса приостановки.</param>
-        /// <param name="e">Сведения о запросе приостановки.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();

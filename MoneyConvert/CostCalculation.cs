@@ -11,8 +11,8 @@ namespace MoneyConvert
         private double firstCost;
         private double secondCost;
 
-        string json;
-        JObject o;
+        readonly string json;
+        readonly JObject o;
 
         public CostCalculation()
         {
@@ -24,11 +24,33 @@ namespace MoneyConvert
         // расчёт стоимости из одной валюты в другую через получаемую стоимость валют в рублях в рублях.
         public string Calculate(double sum, string firstValute, string secondValute)
         {
-            // определяем коэфициент с учетом наминала валюты
-            firstCost =  (double)o["Valute"][firstValute]["Value"]  / (double)o["Valute"][firstValute]["Nominal"];
-            secondCost = (double)o["Valute"][secondValute]["Value"] / (double)o["Valute"][secondValute]["Nominal"];
+            // блок для расчетов с рублем
+            if (firstValute == "RUB" || secondValute == "RUB")
+            {
+                if (firstValute == "RUB" && secondValute != "RUB")
+                {
+                    secondCost = (double)o["Valute"][secondValute]["Value"] / (double)o["Valute"][secondValute]["Nominal"];
+                    return (sum / secondCost).ToString("f"); 
+                }
+                else if (firstValute != "RUB" && secondValute == "RUB")
+                {
+                    firstCost = (double)o["Valute"][firstValute]["Value"] / (double)o["Valute"][firstValute]["Nominal"];
+                    return (sum * firstCost).ToString("f");
+                }
+                else
+                {
+                    return sum.ToString();
+                }
+            }
+            // блок для расчётов без рубля
+            else
+            {
+                // определяем коэфициент с учетом наминала валюты
+                firstCost = (double)o["Valute"][firstValute]["Value"] / (double)o["Valute"][firstValute]["Nominal"];
+                secondCost = (double)o["Valute"][secondValute]["Value"] / (double)o["Valute"][secondValute]["Nominal"];
 
-            return (firstCost / secondCost * sum).ToString("{0:f4}");
+                return (firstCost / secondCost * sum).ToString("f");
+            }
         }
 
 
