@@ -9,8 +9,6 @@ namespace MoneyConvert
         // для сохранения введенного пользовательского значения
         public static string UserValue { set; get; } = "";
 
-       
-        
         public MainPage()
         {
             this.InitializeComponent();
