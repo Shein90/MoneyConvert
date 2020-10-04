@@ -1,8 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using Windows.Devices.Usb;
 
 namespace MoneyConvert
 {
@@ -11,7 +16,7 @@ namespace MoneyConvert
     {
         //сумма введеная пользователем и данные о расчитываемых валютах
         private double sum;
-        private string firstValute;
+        public string firstValute = "AUD";
         private string secondValute;
 
         public CostCalculation(double sum, string firstValute, string secondValute)
@@ -23,6 +28,13 @@ namespace MoneyConvert
 
         public string Calculate()
         {
+            
+            var webClient = new System.Net.WebClient();
+            string json = webClient.DownloadString("https://www.cbr-xml-daily.ru/daily_json.js");
+            JObject o = JObject.Parse(json);
+
+            var value = (string)o["Valute"][firstValute]["Value"];
+            
             string a = "Result";
             return a;
         }
