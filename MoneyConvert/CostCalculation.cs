@@ -1,13 +1,5 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Text.RegularExpressions;
-using Windows.Devices.Usb;
+﻿using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace MoneyConvert
 {
@@ -15,28 +7,28 @@ namespace MoneyConvert
     class CostCalculation
     {
         //сумма введеная пользователем и данные о расчитываемых валютах
-        private double sum;
-        public string firstValute = "AUD";
-        private string secondValute;
 
-        public CostCalculation(double sum, string firstValute, string secondValute)
+        private double firstCost;
+        private double secondCost;
+
+        string json;
+        JObject o;
+
+        public CostCalculation()
         {
-            this.sum = sum;
-            this.firstValute = firstValute;
-            this.secondValute = secondValute;
+            var webClient = new WebClient();
+            json = webClient.DownloadString("https://www.cbr-xml-daily.ru/daily_json.js");
+            o = JObject.Parse(json);
         }
 
-        public string Calculate()
+        // расчёт стоимости из одной валюты в другую через получаемую стоимость валют в рублях в рублях.
+        public string Calculate(double sum, string firstValute, string secondValute)
         {
-            
-            var webClient = new System.Net.WebClient();
-            string json = webClient.DownloadString("https://www.cbr-xml-daily.ru/daily_json.js");
-            JObject o = JObject.Parse(json);
+            // определяем коэфициент с учетом наминала валюты
+            firstCost =  (double)o["Valute"][firstValute]["Value"]  / (double)o["Valute"][firstValute]["Nominal"];
+            secondCost = (double)o["Valute"][secondValute]["Value"] / (double)o["Valute"][secondValute]["Nominal"];
 
-            var value = (string)o["Valute"][firstValute]["Value"];
-            
-            string a = "Result";
-            return a;
+            return (firstCost / secondCost * sum).ToString("{0:f4}");
         }
 
 
